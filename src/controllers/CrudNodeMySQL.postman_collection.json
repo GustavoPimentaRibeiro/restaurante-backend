@@ -1,0 +1,114 @@
+{
+	"info": {
+		"_postman_id": "e6187775-b322-49f2-ad3a-962823d1f2e3",
+		"name": "Crud Node MySQL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Teste\",\r\n    \"email\": \"teste@mail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/create",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Teste atualizado 2\",\r\n    \"email\": \"teste@mail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/update",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "read",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/read?email=teste@mail.com",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"read"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "teste@mail.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"teste@mail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/delete",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"delete"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
