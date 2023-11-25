@@ -9,7 +9,7 @@
     "start:dev": "nodemon --watch \"src/\" --exec \"ts-node -r tsconfig-paths/register src/server.ts\" -e ts",
     "husky:prepare": "husky install",
     "test": "jest --passWithNoTests",
-    "test:watch": "yarn test --watch",
+    "test:watch": "npm test --watch",
     "test:staged": "npm run test --findRelatedTests"
   },
   "keywords": [],
