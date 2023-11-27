@@ -1,54 +1,32 @@
-class Product {
-  private photo: string;
-  private name: string;
-  private price: number;
-  private category: string;
+import { DataTypes } from "sequelize";
+import db from "@/database/db";
 
-  constructor(photo: string, name: string, price: number, category: string) {
-    this.photo = photo;
-    this.name = name;
-    this.price = price;
-    this.category = category;
-  }
-
-  //#region GETS
-  getPhoto() {
-    return this.photo;
-  }
-
-  getName() {
-    return this.name;
-  }
-
-  getPrice() {
-    return this.price;
-  }
-
-  getCategory() {
-    return this.category;
-  }
-  //#endregion
-
-  //#region SETS
-  setPhoto(photo: string) {
-    this.photo = photo;
-  }
-
-  setName(name: string) {
-    this.name = name;
-  }
-
-  setPrice(price: number) {
-    this.price = price;
-  }
-
-  setCategory(category: string) {
-    this.category = category;
-  }
-  //#endregion
-
-  //#region METHODS
-  //#endregion
-}
+const Product = db.define(
+  "products",
+  {
+    id: {
+      type: DataTypes.BIGINT,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false,
+    },
+    name: {
+      type: DataTypes.STRING(50),
+      allowNull: false,
+    },
+    category: {
+      type: DataTypes.STRING(80),
+      allowNull: false,
+    },
+    photo: DataTypes.STRING(255),
+    price: {
+      type: DataTypes.DOUBLE,
+      allowNull: false,
+    },
+  },
+  {
+    timestamps: false,
+  },
+);
 
 export default Product;

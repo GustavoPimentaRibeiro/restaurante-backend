@@ -1,62 +1,32 @@
-class Restaurant {
-  private photo: string;
-  private name: string;
-  private address: string;
-  private business_hours: string;
+import { DataTypes } from "sequelize";
+import db from "@/database/db";
 
-  constructor(
-    photo: string,
-    name: string,
-    address: string,
-    business_hours: string,
-  ) {
-    this.photo = photo;
-    this.name = name;
-    this.address = address;
-    this.business_hours = business_hours;
-  }
-
-  //#region GETS
-  getPhoto() {
-    return this.photo;
-  }
-
-  getName() {
-    return this.name;
-  }
-
-  getAddress() {
-    return this.address;
-  }
-
-  getBusinessHours() {
-    return this.business_hours;
-  }
-  //#endregion
-
-  //#region SETS
-  setPhoto(photo: string) {
-    this.photo = photo;
-  }
-
-  setName(name: string) {
-    this.name = name;
-  }
-
-  setAdress(address: string) {
-    this.address = address;
-  }
-
-  setBusinessHours(business_hours: string) {
-    this.business_hours = business_hours;
-  }
-  //#endregion
-
-  //#region METHODS
-  sayHello() {
-    return "Hello world!";
-  }
-  //#endregion
-}
+const Restaurant = db.define(
+  "restaurants",
+  {
+    id: {
+      type: DataTypes.BIGINT,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false,
+    },
+    name: {
+      type: DataTypes.STRING(50),
+      allowNull: false,
+    },
+    address: {
+      type: DataTypes.STRING(100),
+      allowNull: false,
+    },
+    photo: DataTypes.STRING(255),
+    business_hours: {
+      type: DataTypes.STRING(80),
+      allowNull: false,
+    },
+  },
+  {
+    timestamps: false,
+  },
+);
 
 export default Restaurant;
