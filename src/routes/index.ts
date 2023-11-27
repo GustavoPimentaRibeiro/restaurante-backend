@@ -3,7 +3,7 @@ import { Request, Response } from "express";
 
 const router = Router();
 
-router.get("/", (req, res) => {
+router.get("/", (_, res) => {
   res.send("Hello World!");
 });
 
