@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
 import db from "@/database/db";
+import Restaurant from "@/models/Restaurant";
 
 const Product = db.define(
   "products",
@@ -22,6 +23,14 @@ const Product = db.define(
     price: {
       type: DataTypes.DOUBLE,
       allowNull: false,
+    },
+    restaurant_id: {
+      type: DataTypes.BIGINT,
+      allowNull: true,
+      references: {
+        model: Restaurant,
+        key: "id",
+      },
     },
   },
   {

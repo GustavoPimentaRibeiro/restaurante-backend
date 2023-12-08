@@ -13,6 +13,15 @@ async function findRestaurant(req: any, res: any) {
 }
 
 async function createRestaurant(req: any, res: any) {
+  if (!req.body.name)
+    return res.status(400).json({ error: "Name is required" });
+
+  if (!req.body.address)
+    return res.status(400).json({ error: "Address is required" });
+
+  if (!req.body.business_hours)
+    return res.status(400).json({ error: "Business hours is required" });
+
   RestaurantRepository.create(req.body).then((result) => res.json(result));
 }
 
