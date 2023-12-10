@@ -9,15 +9,14 @@ router.get("/", (_, res) => {
 });
 
 // RESTAURANTS
-router.get("/restaurants", restaurants.findAll);
+router.get("/restaurants", restaurants.findAllRestaurants);
 router.get("/restaurants/:id", restaurants.findRestaurant);
 router.post("/restaurants/create", restaurants.createRestaurant);
 router.put("/restaurants/alter", restaurants.alterRestaurant);
 router.delete("/restaurants/delete/:id", restaurants.deleteRestaurant);
 
 // PRODUCTS
-router.get("/products", products.findAll);
-router.get("/products/:id", products.findProduct);
+router.get("/products/:restaurant_id", products.findProductsByRestaurant);
 router.post("/products/create", products.createProduct);
 router.put("/products/alter", products.alterProduct);
 router.delete("/products/delete/:id", products.deleteProduct);
