@@ -1,7 +1,5 @@
-import Restaurant from "@/models/Restaurant";
+import Person from "@/models/Person";
 
 it("Should say hello world!", () => {
-  const person = new Restaurant("", "", "", "");
-
-  expect(person.sayHello()).toBe("Hello world!");
+  expect(Person.sayHello()).toBe("Hello world!");
 });
