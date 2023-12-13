@@ -37,24 +37,30 @@ async function createProduct(req: any, res: any) {
 }
 
 async function alterProduct(req: any, res: any) {
-  const product = await ProductRepository.findByPk(req.query.id);
+  console.log(req.params);
+  const product = await ProductRepository.findOne({
+    where: { id: req.params.id, restaurant_id: req.params.restaurant_id },
+  });
 
   if (!product) return res.status(204).json({ error: "Product not found" });
 
   const result = await ProductRepository.update(req.body, {
-    where: { id: req.query.id },
+    where: { id: req.params.id, restaurant_id: req.params.restaurant_id },
   });
 
   res.json(result);
 }
 
 async function deleteProduct(req: any, res: any) {
-  const product = ProductRepository.findByPk(req.params.id);
+  console.log(req.params);
+  const product = ProductRepository.findOne({
+    where: { id: req.params.id, restaurant_id: req.params.restaurant_id },
+  });
 
   if (!product) return res.status(204).json({ error: "Product not found" });
 
   const result = await ProductRepository.destroy({
-    where: { id: req.params.id },
+    where: { id: req.params.id, restaurant_id: req.params.restaurant_id },
   });
 
   res.json(result);

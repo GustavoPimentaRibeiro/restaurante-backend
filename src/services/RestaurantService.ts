@@ -30,12 +30,12 @@ async function createRestaurant(req: any, res: any) {
 }
 
 async function alterRestaurant(req: any, res: any) {
-  const product = await RestaurantRepository.findByPk(req.query.id);
+  const product = await RestaurantRepository.findByPk(req.params.id);
 
   if (!product) return res.status(204).json({ error: "Restaurant not found" });
 
   const result = await RestaurantRepository.update(req.body, {
-    where: { id: req.query.id },
+    where: { id: req.params.id },
   });
 
   res.json(result);
