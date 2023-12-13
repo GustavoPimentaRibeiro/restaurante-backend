@@ -37,7 +37,6 @@ async function createProduct(req: any, res: any) {
 }
 
 async function alterProduct(req: any, res: any) {
-  console.log(req.params);
   const product = await ProductRepository.findOne({
     where: { id: req.params.id, restaurant_id: req.params.restaurant_id },
   });
@@ -52,7 +51,6 @@ async function alterProduct(req: any, res: any) {
 }
 
 async function deleteProduct(req: any, res: any) {
-  console.log(req.params);
   const product = ProductRepository.findOne({
     where: { id: req.params.id, restaurant_id: req.params.restaurant_id },
   });

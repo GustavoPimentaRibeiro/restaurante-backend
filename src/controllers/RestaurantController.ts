@@ -1,27 +1,19 @@
 import RestaurantService from "@/services/RestaurantService";
 
 async function findAllRestaurants(_: any, res: any) {
-  const result = await RestaurantService.findAllRestaurants(res);
-
-  res.json(result);
+  await RestaurantService.findAllRestaurants(res);
 }
 
 async function findRestaurant(req: any, res: any) {
-  const result = await RestaurantService.findRestaurant(req, res);
-
-  res.json(result);
+  await RestaurantService.findRestaurant(req, res);
 }
 
 async function createRestaurant(req: any, res: any) {
-  const result = await RestaurantService.createRestaurant(req, res);
-
-  res.json(result);
+  await RestaurantService.createRestaurant(req, res);
 }
 
 async function alterRestaurant(req: any, res: any) {
-  const result = await RestaurantService.alterRestaurant(req, res);
-
-  res.json(result);
+  await RestaurantService.alterRestaurant(req, res);
 }
 
 async function deleteRestaurant(req: any, res: any) {
