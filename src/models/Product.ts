@@ -26,7 +26,7 @@ const Product = db.define(
     },
     restaurant_id: {
       type: DataTypes.BIGINT,
-      allowNull: true,
+      allowNull: false,
       references: {
         model: Restaurant,
         key: "id",
