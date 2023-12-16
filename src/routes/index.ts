@@ -1,7 +1,7 @@
 import { Router } from "express";
 import productsRoute from "@/routes/productRoute";
 import restaurantsRoute from "@/routes/restaurantRoute";
-import promotionsRoute from "@/routes/promotionRoute";
+import salesRoute from "@/routes/saleRoute";
 
 const router = Router();
 
@@ -11,6 +11,6 @@ router.get("/", (_, res) => {
 
 router.use("/restaurants", restaurantsRoute);
 router.use("/products", productsRoute);
-router.use("/products/promotions", promotionsRoute);
+router.use("/sales", salesRoute);
 
 export default router;

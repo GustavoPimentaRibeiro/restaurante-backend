@@ -1,16 +1,16 @@
-import PromotionRepository from "@/models/Promotion";
+import SaleRepository from "@/models/Sale";
 
-async function findAllPromotions(req: any, res: any) {
-  const result = await PromotionRepository.findAll();
+async function findAllSales(res: any) {
+  const result = await SaleRepository.findAll();
 
   res.json(result);
 }
 
-async function findProductPromotion(req: any, res: any) {
+async function findProductSales(req: any, res: any) {
   if (!req.params.product_id)
     return res.status(400).json({ error: "Product id is required" });
 
-  const result = await PromotionRepository.findOne({
+  const result = await SaleRepository.findOne({
     where: { product_id: req.params.product_id },
   });
 
@@ -19,7 +19,7 @@ async function findProductPromotion(req: any, res: any) {
   res.json(result);
 }
 
-async function createPromotion(req: any, res: any) {
+async function createSales(req: any, res: any) {
   if (!req.body.description)
     return res.status(400).json({ error: "Description is required" });
 
@@ -32,33 +32,33 @@ async function createPromotion(req: any, res: any) {
   if (!req.body.product_id)
     return res.status(400).json({ error: "Product id is required" });
 
-  const result = await PromotionRepository.create(req.body);
+  const result = await SaleRepository.create(req.body);
 
   res.json(result);
 }
 
-async function alterPromotion(req: any, res: any) {
+async function alterSales(req: any, res: any) {
   if (!req.params.id) return res.status(400).json({ error: "Id is required" });
 
-  const promotion = await PromotionRepository.findByPk(req.params.id);
+  const sale = await SaleRepository.findByPk(req.params.id);
 
-  if (!promotion) return res.status(204).json({ error: "Promotion not found" });
+  if (!sale) return res.status(204).json({ error: "Promotion not found" });
 
-  const result = await PromotionRepository.update(req.body, {
+  const result = await SaleRepository.update(req.body, {
     where: { id: req.params.id },
   });
 
   res.json(result);
 }
 
-async function deletePromotion(req: any, res: any) {
+async function deleteSales(req: any, res: any) {
   if (!req.params.id) return res.status(400).json({ error: "Id is required" });
 
-  const promotion = await PromotionRepository.findByPk(req.params.id);
+  const sale = await SaleRepository.findByPk(req.params.id);
 
-  if (!promotion) return res.status(204).json({ error: "Promotion not found" });
+  if (!sale) return res.status(204).json({ error: "Promotion not found" });
 
-  const result = await PromotionRepository.destroy({
+  const result = await SaleRepository.destroy({
     where: { id: req.params.id },
   });
 
@@ -66,9 +66,9 @@ async function deletePromotion(req: any, res: any) {
 }
 
 export default {
-  findAllPromotions,
-  findProductPromotion,
-  createPromotion,
-  alterPromotion,
-  deletePromotion,
+  findAllSales,
+  findProductSales,
+  createSales,
+  alterSales,
+  deleteSales,
 };

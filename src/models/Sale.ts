@@ -2,8 +2,8 @@ import { DataTypes } from "sequelize";
 import db from "@/database/db";
 import Product from "@/models/Product";
 
-const Promotion = db.define(
-  "promotions",
+const Sale = db.define(
+  "sales",
   {
     id: {
       type: DataTypes.BIGINT,
@@ -37,4 +37,4 @@ const Promotion = db.define(
   },
 );
 
-export default Promotion;
+export default Sale;
