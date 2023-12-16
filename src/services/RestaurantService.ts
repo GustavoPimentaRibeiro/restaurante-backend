@@ -7,6 +7,8 @@ async function findAllRestaurants(res: any) {
 }
 
 async function findRestaurant(req: any, res: any) {
+  if (!req.params.id) return res.status(400).json({ error: "Id is required" });
+
   const result = await RestaurantRepository.findByPk(req.params.id);
 
   if (!result) return res.status(204).json({ error: "Restaurant not found" });
@@ -30,6 +32,8 @@ async function createRestaurant(req: any, res: any) {
 }
 
 async function alterRestaurant(req: any, res: any) {
+  if (!req.params.id) return res.status(400).json({ error: "Id is required" });
+
   const product = await RestaurantRepository.findByPk(req.params.id);
 
   if (!product) return res.status(204).json({ error: "Restaurant not found" });
@@ -42,6 +46,8 @@ async function alterRestaurant(req: any, res: any) {
 }
 
 async function deleteRestaurant(req: any, res: any) {
+  if (!req.params.id) return res.status(400).json({ error: "Id is required" });
+
   const product = await RestaurantRepository.findByPk(req.params.id);
 
   if (!product) return res.status(204).json({ error: "Restaurant not found" });

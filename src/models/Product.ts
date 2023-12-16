@@ -19,7 +19,6 @@ const Product = db.define(
       type: DataTypes.STRING(80),
       allowNull: false,
     },
-    photo: DataTypes.STRING(255),
     price: {
       type: DataTypes.DOUBLE,
       allowNull: false,

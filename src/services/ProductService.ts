@@ -28,15 +28,17 @@ async function createProduct(req: any, res: any) {
   if (!req.body.restaurant_id)
     return res.status(400).json({ error: "Restaurant ID is required" });
 
-  if (!req.body.photo)
-    return res.status(400).json({ error: "Photo is required" });
-
   const result = await ProductRepository.create(req.body);
 
   res.json(result);
 }
 
 async function alterProduct(req: any, res: any) {
+  if (!req.params.id) return res.status(400).json({ error: "Id is required" });
+
+  if (!req.params.restaurant_id)
+    return res.status(400).json({ error: "Restaurant id is required" });
+
   const product = await ProductRepository.findOne({
     where: { id: req.params.id, restaurant_id: req.params.restaurant_id },
   });
@@ -51,6 +53,11 @@ async function alterProduct(req: any, res: any) {
 }
 
 async function deleteProduct(req: any, res: any) {
+  if (!req.params.id) return res.status(400).json({ error: "Id is required" });
+
+  if (!req.params.restaurant_id)
+    return res.status(400).json({ error: "Restaurant id is required" });
+
   const product = ProductRepository.findOne({
     where: { id: req.params.id, restaurant_id: req.params.restaurant_id },
   });

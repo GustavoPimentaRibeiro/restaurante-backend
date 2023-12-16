@@ -18,7 +18,6 @@ const Restaurant = db.define(
       type: DataTypes.STRING(100),
       allowNull: false,
     },
-    photo: DataTypes.STRING(255),
     business_hours: {
       type: DataTypes.STRING(80),
       allowNull: false,
