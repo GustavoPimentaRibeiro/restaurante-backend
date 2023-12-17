@@ -1,16 +1,41 @@
 import ProductRepository from "@/models/Product";
+import SaleRepository from "@/models/Sale";
+import { Op } from "sequelize";
 
 async function findProductsByRestaurant(req: any, res: any) {
   if (!req.params.restaurant_id)
     return res.status(400).json({ error: "Restaurant id is required" });
 
-  const result = await ProductRepository.findAll({
+  const result: any = await ProductRepository.findAll({
     where: {
       restaurant_id: req.params.restaurant_id,
     },
   });
 
   if (!result) return res.status(204).json({ error: "Product not found" });
+
+  const now: Date = new Date();
+
+  for (const r in result) {
+    const sales: any = await SaleRepository.findAll({
+      where: {
+        product_id: result[r]["dataValues"]["id"],
+        sale_init: {
+          [Op.lt]: now,
+        },
+        sale_end: {
+          [Op.gt]: now,
+        },
+      },
+    });
+
+    if (sales.length > 0) {
+      result[r]["dataValues"]["price"] =
+        sales[0]["dataValues"]["promotional_price"];
+      result[r]["dataValues"]["description"] =
+        sales[0]["dataValues"]["description"];
+    }
+  }
 
   res.json(result);
 }
