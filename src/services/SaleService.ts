@@ -26,8 +26,11 @@ async function createSales(req: any, res: any) {
   if (!req.body.promotional_price)
     return res.status(400).json({ error: "Promotional price is required" });
 
-  if (!req.body.valid_days)
-    return res.status(400).json({ error: "Valid days is required" });
+  if (!req.body.sale_init)
+    return res.status(400).json({ error: "Initial sale datetime is required" });
+
+  if (!req.body.sale_end)
+    return res.status(400).json({ error: "End sale datetime is required" });
 
   if (!req.body.product_id)
     return res.status(400).json({ error: "Product id is required" });

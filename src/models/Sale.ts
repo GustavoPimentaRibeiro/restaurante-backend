@@ -19,8 +19,12 @@ const Sale = db.define(
       type: DataTypes.DOUBLE,
       allowNull: false,
     },
-    valid_days: {
-      type: DataTypes.STRING(50),
+    sale_init: {
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
+    sale_end: {
+      type: DataTypes.DATE,
       allowNull: false,
     },
     product_id: {
