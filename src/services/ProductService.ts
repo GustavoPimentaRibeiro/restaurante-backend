@@ -30,10 +30,9 @@ async function findProductsByRestaurant(req: any, res: any) {
     });
 
     if (sales.length > 0) {
-      result[r]["dataValues"]["price"] =
-        sales[0]["dataValues"]["promotional_price"];
-      result[r]["dataValues"]["description"] =
-        sales[0]["dataValues"]["description"];
+      const { promotional_price, description } = sales[0]["dataValues"];
+      result[r]["dataValues"]["price"] = promotional_price;
+      result[r]["dataValues"]["description"] = description;
     }
   }
 
