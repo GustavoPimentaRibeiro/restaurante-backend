@@ -3,8 +3,7 @@ import Promotions from "@/controllers/SaleController";
 
 const router = Router();
 
-router.get("/", Promotions.findAllSales);
-router.get("/:product_id", Promotions.findProductSale);
+router.get("/:id", Promotions.findProductSale);
 router.post("/create", Promotions.createSale);
 router.put("/alter/:id", Promotions.alterSale);
 router.delete("/delete/:id", Promotions.deleteSale);

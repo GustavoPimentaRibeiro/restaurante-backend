@@ -1,9 +1,5 @@
 import SaleService from "@/services/SaleService";
 
-async function findAllSales(_: any, res: any) {
-  await SaleService.findAllSales(res);
-}
-
 async function findProductSale(req: any, res: any) {
   await SaleService.findProductSales(req, res);
 }
@@ -21,7 +17,6 @@ async function deleteSale(req: any, res: any) {
 }
 
 export default {
-  findAllSales,
   findProductSale,
   createSale,
   alterSale,

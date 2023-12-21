@@ -1,17 +1,11 @@
 import SaleRepository from "@/models/Sale";
 
-async function findAllSales(res: any) {
-  const result = await SaleRepository.findAll();
-
-  res.json(result);
-}
-
 async function findProductSales(req: any, res: any) {
-  if (!req.params.product_id)
+  if (!req.params.id)
     return res.status(400).json({ error: "Product id is required" });
 
-  const result = await SaleRepository.findOne({
-    where: { product_id: req.params.product_id },
+  const result = await SaleRepository.findAll({
+    where: { id: req.params.id },
   });
 
   if (!result) return res.status(204).json({ error: "Promotion not found" });
@@ -69,7 +63,6 @@ async function deleteSales(req: any, res: any) {
 }
 
 export default {
-  findAllSales,
   findProductSales,
   createSales,
   alterSales,
