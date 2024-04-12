@@ -112,3 +112,5 @@ localhost:3000/
 ### API
 - Implementação do middleware para melhora da segurança, fluxo de dados e logging
 - Criação de autenticação de usuário com controle de privilégios
+
+### Instale o MySQL2 na versão mais recente
